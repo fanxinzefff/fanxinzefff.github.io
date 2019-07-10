@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#one{
+				width: 1000px;
+				height: 30px;
+				background-color: orange;
+				border-radius: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+			
+		</div>
+		<button type="button" id="start">开始</button>
+		<img src="img/h0.png" id="lang">
+	</body>
+	<script type="text/javascript">
+		var oneEle = document.getElementById("one");
+		var oneWidth = oneEle.offsetWidth;
+		var timeT= setInterval(function(){
+			oneWidth-= 5;
+			oneEle.style.width = oneWidth + "px";
+			if(oneWidth<0){
+				clearInterval(timeT);
+			}
+		},100)
+		
+		var startEle = document.getElementById("start");
+		
+		
+		var langEle = document.getElementById("lang");
+		var index = 0;
+		var langUp = setInterval(function(){
+			index++;
+			langEle.src = "img/h" + index + ".png";
+			if(index == 5){
+				clearInterval(langUp);
+				langDown();
+			}
+		},100);
+		
+		function langDown(){
+			var langDown = setInterval(function(){
+				index--;
+				langEle.src = "img/h" + index + ".png";
+				if(index == 0){
+					document.body.removeChild(langEle);
+				}
+			},100);
+		}
+		
+		
+	</script>
+</html>
